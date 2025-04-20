@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Navigate } from 'react-router-dom';
 
-// import { login } from '../../store/session';
+import { login } from '../../store/session';
 import './LoginForm.css';
 
 const LoginForm = ({ setShowSignInModal }) => {
@@ -24,6 +24,7 @@ const LoginForm = ({ setShowSignInModal }) => {
     setValidationErrors(errors);
 
     if (!errors.length) {
+      console.log('hey')
       const data = await dispatch(login(email, password));
       if (data) {
         const backendErrors = [];
