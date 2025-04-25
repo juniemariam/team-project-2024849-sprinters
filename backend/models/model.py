@@ -1,27 +1,28 @@
 from .db import db, environment, SCHEMA
+from .user import User
 from sqlalchemy.ext.declarative import declarative_base
-
-
+from sqlalchemy.orm import relationship
+from datetime import datetime
 
 
 Base = declarative_base()
 
-favorites = db.Table(
-    "favorites",
-    db.Model.metadata,
-    db.Column(
-        "user_id",
-        db.Integer,
-        db.ForeignKey("users.id"),
-        primary_key=True
-    ),
-    db.Column(
-        "restaurant_id",
-        db.Integer,
-        db.ForeignKey("restaurants.id"),
-        primary_key=True
-    ),
-)
+# favorites = db.Table(
+#     "favorites",
+#     db.Model.metadata,
+#     db.Column(
+#         "user_id",
+#         db.Integer,
+#         db.ForeignKey("users.id"),
+#         primary_key=True
+#     ),
+#     db.Column(
+#         "restaurant_id",
+#         db.Integer,
+#         db.ForeignKey("restaurants.id"),
+#         primary_key=True
+#     ),
+# )
 
 
 class Restaurant(db.Model):
@@ -118,3 +119,49 @@ class Reservation(db.Model):
         party_size={self.party_size}>'''
 
 
+class Review(db.Model):
+    __tablename__ = "reviews"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurants.id"), nullable=False)
+    review = db.Column(db.String(2000), nullable=True)
+    rating = db.Column(db.Integer, nullable=False)
+    # created_at = db.Column(db.DateTime, nullable=False, index=False, default=datetime.utcnow)
+
+
+    restaurant = db.relationship("Restaurant", back_populates="reviews")
+    user = db.relationship("User", back_populates="reviews")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'restaurant_id': self.restaurant_id,
+            'review': self.review,
+            'rating': self.rating,
+            'user': self.user.to_dict()
+        }
+
+    def __repr__(self):
+        return f'''<Review, id={self.id}, user_id={self.user_id}, 
+        restaruant_id={self.restaurant_id}, review={self.review},
+        rating={self.rating}>'''
+
+
+class SavedRestaurant(db.Model):
+    __tablename__ = "saved_restaurants"
+
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurants.id"), nullable=False)
+
+    restaurants = db.relationship("Restaurant", back_populates="saved_restaurants")
+    users = db.relationship("User", back_populates="saved_restaurants")
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'restaurant_id': self.restaurant_id
+        }
