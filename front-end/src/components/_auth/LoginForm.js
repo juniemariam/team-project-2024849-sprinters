@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { login } from '../../store/session';
-
+import './LoginForm.css';
 
 const LoginForm = ({ setShowSignInModal }) => {
   const user = useSelector(state => state.session.user);
@@ -60,7 +60,7 @@ const LoginForm = ({ setShowSignInModal }) => {
   return (
     <form onSubmit={onLogin} className="login-form">
       <h1>Welcome to ReserveTable!</h1>
-      <div>
+      <div className="sign-in-form-error-messages">
         {validationErrors.length > 0 &&
           validationErrors.map(error => (
             <div key={error}>{error}</div>
@@ -77,7 +77,7 @@ const LoginForm = ({ setShowSignInModal }) => {
           placeholder='Email'
           value={email}
           onChange={updateEmail}
-          
+          className="sign-in-input"
         />
       </div>
       <div>
@@ -88,12 +88,12 @@ const LoginForm = ({ setShowSignInModal }) => {
           placeholder='Password'
           value={password}
           onChange={updatePassword}
-          
+          className="sign-in-input"
         />
-        <button type='submit' >Login</button>
+        <button type='submit' className="sign-in-form-button1">Login</button>
       </div>
       <div>
-        <button onClick={demoUserLogin} >Demo User</button>
+        <button onClick={demoUserLogin} className="sign-in-form-button2">Demo User</button>
       </div>
     </form>
   );
