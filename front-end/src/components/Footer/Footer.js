@@ -84,12 +84,7 @@ function Footer() {
                         </div>
                         <div>
                             <div className="footer-other-sites">
-                                <div className="footer-other-sites-text">
-                                    Other work by
-                                    <a id="portfolio" className="portfolio-link" href="https://james-lee.io" target="_blank" rel="noreferrer">
-                                        &nbsp;<span className="footer-name-text">James Lee</span>&nbsp;
-                                    </a>
-                                </div>
+                               
                                 <div className="footer-below-other-sites">
                                     <div className="footer-other-site">
                                         <a id="ayrbnb" className="ayrbnb-link" href="https://ayrbnb.herokuapp.com" target="_blank" rel="noreferrer">
@@ -108,24 +103,7 @@ function Footer() {
                         </div>
                     </div>
                     <div>
-                        <div className="footer-connect">
-                            <div className="footer-connect-with-me-text">
-                                LET'S CONNECT!
-                            </div>
-                            <div className="footer-below-connect">
-                                <div className="footer-links">
-                                    <a id="github" className="github-link" href="https://github.com/jameswonlee" target="_blank" rel="noreferrer">
-                                        <i className="fa-brands fa-github fa-xl"></i>
-                                    </a>
-                                    <a id="linkedin" className="linkedin-link" href="https://www.linkedin.com/in/jameswonlee/" target="_blank" rel="noreferrer">
-                                        <i className="fa-brands fa-linkedin fa-xl"></i>
-                                    </a>
-                                    <a id="angel-list" className="angel-list-link" href="https://angel.co/u/jameswonlee" target="_blank" rel="noreferrer">
-                                        <img src={angelList} className=" f-brands angel-list-icon" alt="" />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                       
                     </div>
                 </div>
                 <div className="footer-bottom">
@@ -136,17 +114,7 @@ function Footer() {
                         <div>Do Not Sell</div>
                         <div>Cookies Settings</div>
                     </div>
-                    <div className="footer-copyright">
-                        Copyright © 2023 ReserveTable, Inc, an
-                        <a id="opentable" className="opentable-link" href="https://www.opentable.com" target="_blank" rel="noreferrer">
-                            &nbsp;<span className="footer-name-text-underline">OpenTable</span>&nbsp;
-                        </a>
-                        clone by<span className="footer-name-text">
-                            <a id="portfolio" className="portfolio-link" href="https://james-lee.io" target="_blank" rel="noreferrer">
-                                &nbsp;<span className="footer-name-text-underline">James Lee,</span>&nbsp;
-                            </a>
-                        </span> Los Angeles CA 90048 - All rights reserved.
-                    </div>
+                    
                 </div>
             </div>
         </footer >
