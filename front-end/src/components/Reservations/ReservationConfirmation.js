@@ -15,6 +15,7 @@ import reservationCompletedIcon from '../../icons/reservation-completed-red-icon
 import rateReviewIcon from '../../icons/rate-review-icon.ico';
 import browseMenuIcon from '../../icons/browse-menu-icon.ico';
 import getDirectionsIcon from '../../icons/get-directions-icon.ico';
+import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import dayjs from 'dayjs';
 import './ReservationConfirmation.css';
 
@@ -80,6 +81,19 @@ function ReservationConfirmation() {
         behavior: 'smooth'
     });
 
+    const mapContainerStyle = {
+        width: '100%',
+        height: '300px',
+      };
+      
+      const center = {
+        lat: reservation.restaurant.latitude, // make sure these values are in your DB
+        lng: reservation.restaurant.longitude,
+      };
+      
+      const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
+
+
 
     return (
         <div className="reservation-details-outer-container">
@@ -129,14 +143,39 @@ function ReservationConfirmation() {
                                 <div className="reservation-confirmation-restaurant-profile-text">Restaurant's profile</div>
                             </div>
                         </div>
-                        <div className="reservation-confirmation-get-directions-container">
+                        {/* <div className="reservation-confirmation-get-directions-container">
                             <div className="reservation-confirmation-get-directions-left">
                                 <img src={getDirectionsIcon} alt="" className="reservation-confirmation-get-directions-icon" />
                             </div>
                             <div className="reservation-confirmation-get-directions-right">
                                 <div className="reservation-confirmation-get-directions-text">Get directions</div>
                             </div>
-                        </div>
+                        </div> */}
+                        
+                        <a href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(`${reservation.restaurant.name}, ${reservation.restaurant.address}`)}`}
+
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="reservation-confirmation-get-directions-container">
+                            <div className="reservation-confirmation-get-directions-left">
+                                <img src={getDirectionsIcon} alt="" className="reservation-confirmation-get-directions-icon" />
+                            </div>
+                            <div className="reservation-confirmation-get-directions-right">
+                                <div className="reservation-confirmation-get-directions-text">Get directions</div>
+                            </div>
+                        </a>
+
+                        <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
+                        {/* <GoogleMap
+                            mapContainerStyle={mapContainerStyle}
+                            center={center}
+                            zoom={15}
+                        >
+                            <Marker position={center} />
+                        </GoogleMap> */}
+                        </LoadScript>
+
+
                     </div>
                 </div>
                 :

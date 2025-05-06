@@ -352,7 +352,7 @@
 }
 
 .reservation-confirmation-get-directions-container:hover {
-    cursor: not-allowed;
+    /* cursor: not-allowed; */
     background-color: rgb(252, 252, 252);
 
 }
