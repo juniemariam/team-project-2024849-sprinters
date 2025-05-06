@@ -1,8 +1,11 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import { logout } from '../../store/session';
+import { resetReservations } from '../../store/reservations';
+import { resetReviews } from '../../store/reviews';
 import './LogoutButton.css'
-
+import { resetSavedRestaurants } from '../../store/savedRestaurants';
 
 const LogoutButton = ({ setShowSignInModal }) => {
   const dispatch = useDispatch();

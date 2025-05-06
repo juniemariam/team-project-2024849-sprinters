@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import NavigationMenu from './NavigationMenu'
-import logo from '../../icons/logo.png';
+import logo from '../../icons/BookTable.jpeg';
 import locationIcon from '../../icons/location-icon.ico';
 import downCarrot from '../../icons/down-caret.ico';
 import aboveNavDownCaret from '../../icons/nav-bar-down-caret.ico';
