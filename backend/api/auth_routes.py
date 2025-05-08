@@ -28,11 +28,12 @@ def authenticate():
     return {'errors': ['Unauthorized']}
 
 
-@auth_routes.route('/login', methods=['POST'])
+@auth_routes.route('/login', methods=['GET','POST'])
 def login():
-    """
-    Logs a user in
-    """
+
+    if request.method == 'GET':
+        return jsonify({"message": "Login route is reachable via GET"}), 200 
+   
     form = LoginForm()
     # Get the csrf_token from the request cookie and put it into the
     # form manually to validate_on_submit can be used
