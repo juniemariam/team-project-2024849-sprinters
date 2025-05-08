@@ -33,17 +33,25 @@ def login():
 
     if request.method == 'GET':
         return jsonify({"message": "Login route is reachable via GET"}), 200 
-   
-    form = LoginForm()
-    # Get the csrf_token from the request cookie and put it into the
-    # form manually to validate_on_submit can be used
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        # Add the user to the session, we are logged in!
-        user = User.query.filter(User.email == form.data['email']).first()
-        login_user(user)
-        return user.to_dict()
-    return {'errors': validation_errors_to_error_messages(form.errors)}, 401
+    if request.method == 'POST':
+        # print("LOGIN POST ROUTE ENTERED") # Check Render logs
+        # print(f"Request headers: {request.headers}")
+        # print(f"Request cookies: {request.cookies}")
+        # print(f"Request form data: {request.form}")
+        # print(f"Request JSON data: {request.get_json(silent=True)}")
+        return jsonify({"message": "Login POST request received successfully!"}), 200
+    return jsonify({"error": "Method not handled correctly in debug"}), 500
+
+    # form = LoginForm()
+    # # Get the csrf_token from the request cookie and put it into the
+    # # form manually to validate_on_submit can be used
+    # form['csrf_token'].data = request.cookies['csrf_token']
+    # if form.validate_on_submit():
+    #     # Add the user to the session, we are logged in!
+    #     user = User.query.filter(User.email == form.data['email']).first()
+    #     login_user(user)
+    #     return user.to_dict()
+    # return {'errors': validation_errors_to_error_messages(form.errors)}, 401
 
 
 @auth_routes.route('/logout')
