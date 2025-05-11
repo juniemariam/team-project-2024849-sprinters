@@ -1,21 +1,18 @@
 import React from 'react';
 import InfoCard from './InfoCard';
-import Navbar from "./RestaurantNavBar";
 import './LandingPage.css';
-import  img2 from '../../assets/landingPageImg-2.png';
-import img1 from '../../assets/landingPageImg-1.png'; // use this for icon if needed
+import img1 from './images/landingPageImg-1.png'
+import img2 from './images/landingPageImg-2.png'
 
-const isLoggedIn = localStorage.getItem('restaurantLoggedIn') === 'true';
 
 
 const LandingPage = () => {
     return (
         <>
-            <Navbar />
 
             <div className="heading-wrapper">
                 <h1 className="heading-text">
-                    {isLoggedIn ? 'Welcome back to your Restaurant Dashboard' : 'Welcome to Restaurant Management'}
+                    {'Welcome to Restaurant Management'}
                 </h1>
             </div>
 
