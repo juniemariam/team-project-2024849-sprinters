@@ -87,7 +87,7 @@ function SearchBar() {
     return (
         <div className="search-bar-container">
             <div className="search-bar-heading">
-                <h1>Find your table for any occasion</h1>
+                <h1>Search A Table</h1>
             </div>
             <div className="search-bar-lower-container">
                 <div className="search-bar-lower">
