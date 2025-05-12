@@ -15,7 +15,7 @@ restaurant_routes = Blueprint("restaurant_routes", __name__, url_prefix="/api/re
 # View all restaurants
 @restaurant_routes.route("/", methods=["GET"])
 def all_restaurants():
-    all_restaurants = Restaurant.query.all()
+    all_restaurants = Restaurant.query.filter_by(is_approved=True).all()
     if all_restaurants:
         response = []
         for restaurant in all_restaurants:

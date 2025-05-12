@@ -14,7 +14,8 @@ from .api.auth_routes import auth_routes
 from .api.reservation_routes import reservation_routes
 from .api.restaurant_routes import restaurant_routes
 from .api.review_routes import review_routes
-from .api.restaurant_manager_routes import restaurant_manager_routes  # 🆕 Your new routes
+from .api.restaurant_manager_routes import restaurant_manager_routes
+from  .api.admin_routes import admin_routes
 
 
 
@@ -58,6 +59,7 @@ app.register_blueprint(reservation_routes, url_prefix='/api/reservations')
 app.register_blueprint(restaurant_routes, url_prefix='/api/restaurants')
 app.register_blueprint(review_routes, url_prefix='/api/reviews')
 app.register_blueprint(restaurant_manager_routes, url_prefix='/api')
+app.register_blueprint(admin_routes)
 
 # HTTPS redirect in production
 @app.before_request

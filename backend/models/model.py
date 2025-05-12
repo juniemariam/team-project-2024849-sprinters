@@ -47,9 +47,9 @@ class Restaurant(db.Model):
     description = db.Column(db.String(2000), nullable=False)
     website = db.Column(db.String(2000), nullable=False)
     preview_img = db.Column(db.String(2000), nullable=False)
-    reservations = db.relationship("Reservation", back_populates="restaurant")
-    reviews = db.relationship("Review", back_populates="restaurant")
-    saved_restaurants = db.relationship("SavedRestaurant", back_populates="restaurants")
+    reservations = db.relationship("Reservation", back_populates="restaurant", cascade="all, delete-orphan")
+    reviews = db.relationship("Review", back_populates="restaurant", cascade="all, delete-orphan")
+    saved_restaurants = db.relationship("SavedRestaurant", back_populates="restaurants", cascade="all, delete-orphan")
     manager_id = db.Column(db.Integer, db.ForeignKey("restaurant_managers.id"), nullable=True)
     is_approved = db.Column(db.Boolean, default=False)
 
@@ -77,7 +77,8 @@ class Restaurant(db.Model):
             'website': self.website,
             'preview_img': self.preview_img,
             'reviews': [review.to_dict() for review in self.reviews] if self.reviews else None,
-            'total_num_reservations': len(self.reservations)
+            'total_num_reservations': len(self.reservations),
+            'is_approved': self.is_approved
         }
 
     def __repr__(self):
@@ -98,8 +99,7 @@ class Reservation(db.Model):
     restaurant_id = db.Column(db.Integer, db.ForeignKey("restaurants.id"), nullable=False)
     reservation_time = db.Column(db.DateTime, nullable=False)
     party_size = db.Column(db.Integer, nullable=False)
-    # created_at = db.Column(db.DateTime, nullable=False, index=False, default=datetime.utcnow)
-
+    created_at = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 
     restaurant = db.relationship("Restaurant", back_populates="reservations")
     user = db.relationship("User", back_populates="reservations")
