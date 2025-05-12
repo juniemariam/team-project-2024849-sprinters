@@ -1,22 +1,50 @@
 steps:
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['build', '-t', 'gcr.io/$PROJECT_ID/restaurant-backend', './backend']
+    args: ['build', '-t', 'gcr.io/golden-plateau-459605-e6/restaurant-backend', './backend']
 
   - name: 'gcr.io/cloud-builders/docker'
-    args: ['push', 'gcr.io/$PROJECT_ID/restaurant-backend']
+    args: ['push', 'gcr.io/golden-plateau-459605-e6/restaurant-backend']
 
-  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
-    entrypoint: 'gcloud'
+  - name: 'gcr.io/cloud-builders/gcloud'
     args:
       - 'run'
       - 'deploy'
       - 'restaurant-backend'
       - '--image'
-      - 'gcr.io/$PROJECT_ID/restaurant-backend'
+      - 'gcr.io/golden-plateau-459605-e6/restaurant-backend'
       - '--platform'
       - 'managed'
       - '--region'
       - 'us-central1'
       - '--allow-unauthenticated'
+      - '--add-cloudsql-instances'
+      - 'golden-plateau-459605-e6:us-central1:opentable-db'
       - '--set-env-vars'
-      - 'FLASK_ENV=production,JWT_SECRET_KEY=uP8KEtTP1iEdDQpW7A9LnrzP7My63cgPoGFR4dKrdEs'
+      - |
+        FLASK_ENV=production,
+        JWT_SECRET_KEY=uP8KEtTP1iEdDQpW7A9LnrzP7My63cgPoGFR4dKrdEs,
+        DB_USER=restaurant_user,
+        DB_PASS=Rinku@123,
+        DB_NAME=restaurantapp,
+        INSTANCE_CONNECTION_NAME=golden-plateau-459605-e6:us-central1:opentable-db
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args:
+      - 'run'
+      - '--rm'
+      - '-e'
+      - 'FLASK_ENV=production'
+      - '-e'
+      - 'JWT_SECRET_KEY=uP8KEtTP1iEdDQpW7A9LnrzP7My63cgPoGFR4dKrdEs'
+      - '-e'
+      - 'DB_USER=restaurant_user'
+      - '-e'
+      - 'DB_PASS=Rinku@123'
+      - '-e'
+      - 'DB_NAME=restaurantapp'
+      - '-e'
+      - 'INSTANCE_CONNECTION_NAME=golden-plateau-459605-e6:us-central1:opentable-db'
+      - 'gcr.io/golden-plateau-459605-e6/restaurant-backend'
+      - 'flask'
+      - 'db'
+      - 'upgrade'
