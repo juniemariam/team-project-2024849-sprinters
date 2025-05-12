@@ -22,10 +22,9 @@ function ManageRestaurant() {
       method: "PATCH",
       credentials: "include"
     }).then(() => {
-      setRestaurants(prev =>
-        prev.map(r => r.id === id ? { ...r, is_approved: true } : r)
-      );
-    });
+      return fetch("/api/admin/restaurants", { credentials: "include" });
+    }).then(res => res.json())
+      .then(setRestaurants);
   };
 
   const deleteRestaurant = (id) => {
