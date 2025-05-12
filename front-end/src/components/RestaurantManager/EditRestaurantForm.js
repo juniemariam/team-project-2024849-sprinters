@@ -10,10 +10,9 @@ const EditRestaurantForm = () => {
     const [message, setMessage] = useState('');
 
     const expectedFields = [
-        'name', 'neighborhood', 'cuisines', 'cost',
-        'operation_hours', 'dining_style', 'dress_code',
-        'parking_details', 'payment_options', 'cross_street',
-        'phone', 'executive_chef', 'description', 'website', 'preview_img'
+        'name', 'address','neighborhood', 'cuisines', 'cost',
+        'operation_hours', 'phone',
+        'description', 'website', 'preview_img'
     ];
 
     useEffect(() => {

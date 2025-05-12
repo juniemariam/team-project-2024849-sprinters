@@ -2,7 +2,6 @@ from flask import Blueprint, request, jsonify
 from backend.models import db, RestaurantManager, Restaurant, MenuItem
 from werkzeug.security import check_password_hash, generate_password_hash
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity, create_refresh_token
-from flask import Blueprint, request, jsonify
 
 support_routes = Blueprint('support', __name__)
 restaurant_manager_routes = Blueprint('restaurant_manager', __name__)
@@ -56,16 +55,11 @@ def create_restaurant():
     restaurant = Restaurant(
         name=data['name'],
         neighborhood=data['neighborhood'],
+        address=data['address'],
         cuisines=data['cuisines'],
         cost=data['cost'],
         operation_hours=data['operation_hours'],
-        dining_style=data['dining_style'],
-        dress_code=data['dress_code'],
-        parking_details=data['parking_details'],
-        payment_options=data['payment_options'],
-        cross_street=data['cross_street'],
         phone=data['phone'],
-        executive_chef=data.get('executive_chef'),
         description=data['description'],
         website=data['website'],
         preview_img=data['preview_img'],
@@ -97,7 +91,7 @@ def get_manager_info(manager_id):
 @restaurant_manager_routes.route('/restaurant-manager/manage-restaurants', methods=['GET'])
 @jwt_required()
 def get_my_restaurants():
-    manager_id = get_jwt_identity()
+    manager_id = int(get_jwt_identity())
     restaurants = Restaurant.query.filter_by(manager_id=manager_id).all()
 
     result = []
@@ -206,7 +200,7 @@ def delete_menu_item(item_id):
     return jsonify({'message': 'Menu item deleted'}), 200
 
 
-@restaurant_manager_routes.route('/menu-items/<int:item_id>', methods=['PUT'])
+@restaurant_manager_routes.route('/menu-items/<int:item_id>', methods=['PUT']) 
 @jwt_required()
 def update_menu_item(item_id):
     manager_id = get_jwt_identity()
@@ -237,15 +231,21 @@ def get_approved_restaurants():
     } for r in restaurants]), 200
 
 
-
-
-
 @support_routes.route('/support/contact', methods=['POST'])
 def contact_support():
     data = request.get_json()
     # You can save this to DB or email to admin
     print(f"Support callback requested from {data['name']} ({data['email']})")
     return jsonify({'message': 'Callback request received'}), 200
+
+
+@restaurant_manager_routes.route('/restaurant-manager/public-menu-items/<int:restaurant_id>', methods=['GET'])
+def get_public_menu_items(restaurant_id):
+    restaurant = Restaurant.query.get(restaurant_id)
+    if not restaurant:
+        return jsonify({'error': 'Restaurant not found'}), 404
+
+    return jsonify([item.to_dict() for item in restaurant.menu_items]), 200
 
 
 
