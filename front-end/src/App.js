@@ -36,6 +36,9 @@ import ManageMenu from "./components/RestaurantManager/ManageMenu";
 import SupportPage from "./components/RestaurantManager/SupportRestaurant";
 import AboutPage from "./components/RestaurantManager/AboutPage";
 
+import AdminDashboard from "./components/Admin/AdminDashboard";
+import ManageRestaurant from "./components/Admin/ManageRestaurant";
+
 function AppWrapper() {
   return (
       <BrowserRouter>
@@ -165,6 +168,14 @@ function App() {
           </Route>
 
 
+          <Route path="/admin/dashboard" exact>
+            <AdminDashboard/>
+          </Route>
+
+
+          <Route path="/admin/restaurants" exact>
+            <ManageRestaurant/>
+          </Route>
 
           {/*<Route path="/restaurant-manager/add" exact>*/}
           {/*  <AddRestaurantForm/>*/}

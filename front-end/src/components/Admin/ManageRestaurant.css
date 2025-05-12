@@ -1,0 +1,163 @@
+.manage-restaurants {
+  padding: 20px;
+}
+
+.manage-restaurants h2 {
+  font-size: 24px;
+  margin-bottom: 16px;
+}
+
+.manage-restaurants table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.manage-restaurants th,
+.manage-restaurants td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.manage-restaurants th {
+  background-color: #f8f8f8;
+}
+
+.manage-restaurants button {
+  padding: 6px 12px;
+  margin-right: 8px;
+  background-color: #005f73;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.manage-restaurants button:hover {
+  background-color: #0a9396;
+}
+
+.admin-btn {
+  padding: 6px 12px;
+  margin-right: 8px;
+  border: none;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.approve-btn {
+  background-color: #198754;
+  color: white;
+}
+
+.approve-btn:hover {
+  background-color: #157347;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+.delete-btn:hover {
+  background-color: #bb2d3b;
+}
+
+.action-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: flex-start;
+  align-items: center;
+  max-width: 250px;
+}
+
+
+.dashboard-card {
+  margin: 0 auto;
+  width: fit-content;
+  max-width: 100%;
+  padding: 20px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 32px;
+  border-radius: 12px;
+  max-width: 600px;
+  width: 90%;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.2s ease-out;
+  position: relative;
+}
+
+.modal-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 16px;
+  color: #333;
+}
+
+.modal-details p {
+  font-size: 15px;
+  margin: 8px 0;
+  color: #444;
+}
+
+.modal-description {
+  margin-top: 4px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+}
+
+.modal-details a {
+  color: #0d6efd;
+  text-decoration: underline;
+}
+
+.modal-details a:hover {
+  text-decoration: none;
+}
+
+.close-btn {
+  background-color: #dc3545;
+  margin-top: 20px;
+}
+
+.close-btn:hover {
+  background-color: #bb2d3b;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.modal-image {
+  width: 100%;
+  height: auto;
+  max-height: 250px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+
