@@ -52,7 +52,7 @@ backend/ # Flask app
 └── api/
 └── seeds/
 └── init.py
-
+---
 front-end/ # React app
 └── src/
 └── components/
