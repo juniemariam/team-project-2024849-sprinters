@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation, useParams } from 'react-router-dom';
 import { getOneRestaurant } from '../../store/restaurants';
@@ -14,6 +14,7 @@ import cuisineIcon from './icons/cuisine-icon.ico';
 import saveRestaurantIcon from '../../icons/save-restaurant.ico';
 import savedRestaurantIcon from '../../icons/saved-restaurant-icon.ico';
 import './RestaurantProfile.css';
+import MenuDialog from '../MenuDialog'; // Import your new component
 
 
 function RestaurantProfile({ userReservationTime, showSignInModal, setShowSignInModal }) {
@@ -26,6 +27,7 @@ function RestaurantProfile({ userReservationTime, showSignInModal, setShowSignIn
     const restaurant = useSelector(state => state.restaurants[restaurantId]);
     const savedRestaurants = useSelector(state => Object.values(state.savedRestaurants));
     const restaurantAlreadySaved = savedRestaurants.find(restaurant => restaurant.restaurant_id === +restaurantId);
+    const [showMenuDialog, setShowMenuDialog] = useState(false);
 
     useEffect(() => {
         dispatch(getOneRestaurant(restaurantId));
@@ -124,10 +126,7 @@ function RestaurantProfile({ userReservationTime, showSignInModal, setShowSignIn
                         <div className="restaurant-profile-details-tab-and-border">
                             <div className="restaurant-profile-details-tabs">
                                 <div className="space-to-left-11">Overview</div>
-                                <div className="space-to-left-12">Experiences</div>
-                                <div className="space-to-left-12">Popular dishes</div>
-                                <div className="space-to-left-12">Photos</div>
-                                <div className="space-to-left-12">Menu</div>
+                                <div onClick={() => setShowMenuDialog(true)} className="space-to-left-12 restaurant-profile-reviews-clickable">Menu</div>
                                 <div onClick={scrollToReviews} className="space-to-left-12 restaurant-profile-reviews-clickable">Reviews</div>
                             </div>
                             <div className="restaurant-profile-details-tab-border-bottom">
@@ -238,6 +237,13 @@ function RestaurantProfile({ userReservationTime, showSignInModal, setShowSignIn
                 <Modal onClose={() => setShowSignInModal(false)}>
                     <LoginForm setShowSignInModal={setShowSignInModal} />
                 </Modal>
+            )}
+            {/* Place the MenuDialog here */}
+            {showMenuDialog && (
+                <MenuDialog
+                    restaurantId={restaurant.id}
+                    onClose={() => setShowMenuDialog(false)}
+                />
             )}
         </div>
     )

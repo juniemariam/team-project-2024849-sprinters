@@ -34,16 +34,12 @@ class Restaurant(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(255), nullable=False)
     neighborhood = db.Column(db.String(255), nullable=False)
+    address = db.Column(db.String(500), nullable=False)
     cuisines = db.Column(db.String(255), nullable=False)
-    cost = db.Column(db.Integer, nullable=False)
+    cost = db.Column(db.String(50), nullable=False)
     operation_hours = db.Column(db.String(255), nullable=False)
-    dining_style = db.Column(db.String(255), nullable=False)
-    dress_code = db.Column(db.String(255), nullable=False)
-    parking_details = db.Column(db.String(2000), nullable=False)
-    payment_options = db.Column(db.String(2000), nullable=False)
-    cross_street = db.Column(db.String(255), nullable=False)
+    
     phone = db.Column(db.String(255), nullable=False)
-    executive_chef = db.Column(db.String(255), nullable=True)
     description = db.Column(db.String(2000), nullable=False)
     website = db.Column(db.String(2000), nullable=False)
     preview_img = db.Column(db.String(2000), nullable=False)
@@ -63,16 +59,11 @@ class Restaurant(db.Model):
             'id': self.id,
             'name': self.name,
             'neighborhood': self.neighborhood,
+            'address': self.address,
             'cuisines': self.cuisines,
             'cost': self. cost,
             'operation_hours': self.operation_hours,
-            'dining_style': self.dining_style,
-            'dress_code': self.dress_code,
-            'parking_details': self.parking_details,
-            'payment_options': self.payment_options,
-            'cross_street': self.cross_street,
             'phone': self.phone,
-            'executive_chef': self.executive_chef,
             'description': self.description,
             'website': self.website,
             'preview_img': self.preview_img,
@@ -82,12 +73,11 @@ class Restaurant(db.Model):
         }
 
     def __repr__(self):
-        return f'''<Restaurant, id={self.id}, name={self.name}, 
-        neighborhood={self.neighborhood}, cuisines={self.cuisines}, cost={self. cost},
-        operation_hours={self.operation_hours}, dining_style={self.dining_style},
-        dress_code={self.dress_code}, parking_details={self.parking_details},
-        payment_options={self.payment_options}, cross_street={self.cross_street},
-        phone={self.phone}, executive_chef={self.executive_chef},
+        return f'''<Restaurant, id={self.id}, name={self.name},
+        address ={self.address},
+        cuisines={self.cuisines}, cost={self. cost},
+        operation_hours={self.operation_hours},
+        phone={self.phone},
         description={self.description}, preview_img={self.preview_img} >'''
 
 

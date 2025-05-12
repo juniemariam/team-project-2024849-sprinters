@@ -27,10 +27,6 @@ function RestaurantCard({ restaurant, setUserReservationTime }) {
             <div className="restaurant-card-upper">
                 <div className="preview-image-container">
                     <img className="preview-image" src={restaurant.preview_img}
-                        alt="img2"
-                        onError={(e) => {
-                            e.target.src = "https://cdn.vox-cdn.com/thumbor/OheW0CNYdNihux9eVpJ958_bVCE=/0x0:5996x4003/1200x900/filters:focal(1003x1633:1961x2591)/cdn.vox-cdn.com/uploads/chorus_image/image/51830567/2021_03_23_Merois_008.30.jpg";
-                        }}
                     />
                 </div>
             </div>
