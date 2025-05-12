@@ -1,0 +1,41 @@
+<!-- templates/email/reservation_confirmation.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reservation Confirmation</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; color: #333; }
+        .container { padding: 20px; border: 1px solid #ddd; border-radius: 5px; background-color: #f9f9f9; }
+        h1 { color: #4CAF50; }
+        p { line-height: 1.6; }
+        .details { margin-top: 20px; padding: 15px; background-color: #fff; border: 1px solid #eee; }
+        .footer { margin-top: 30px; font-size: 0.9em; color: #777; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Reservation is Confirmed!</h1>
+        
+        <p>Dear {{ user_name }},</p>
+        
+        <p>Thank you for making a reservation at <strong>{{ restaurant_name }}</strong>. We are pleased to confirm your booking.</p>
+        
+        <div class="details">
+            <p><strong>Reservation Details:</strong></p>
+            <p><strong>Restaurant:</strong> {{ restaurant_name }}</p>
+            <p><strong>Date and Time:</strong> {{ reservation_time }}</p>
+            <p><strong>Table Size:</strong> {{ party_size }}</p>
+        </div>
+        
+        <p>If you need to make any changes to your reservation, please contact the restaurant directly or manage your booking through our platform.</p>
+        
+        <p>We look forward to welcoming you!</p>
+        
+        <div class="footer">
+            <p>Sincerely,</p>
+            <p>The Team at {{ restaurant_name }} (BookTable- Sprinters)</p>
+            <!-- You might want to add your app's name or link here -->
+        </div>
+    </div>
+</body>
+</html>

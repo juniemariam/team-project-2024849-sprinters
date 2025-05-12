@@ -30,23 +30,23 @@ const NavBar = ({ loaded, showSignInModal, setShowSignInModal }) => {
             For Businesses
           </span>
           </div>
-          <div className="above-nav-mobile">
+          {/* <div className="above-nav-mobile">
           <span>
             Mobile
             <span>
               <img src={aboveNavDownCaret} className="above-nav-down-caret" alt="caret" />
             </span>
           </span>
-          </div>
-          <div className="above-nav-faqs">FAQs</div>
-          <div className="above-nav-en">
+          </div> */}
+          {/* <div className="above-nav-faqs">FAQs</div> */}
+          {/* <div className="above-nav-en">
           <span>
             EN
             <span>
               <img src={aboveNavDownCaret} className="above-nav-down-caret" alt="caret" />
             </span>
           </span>
-          </div>
+          </div> */}
         </div>
 
         <div className="nav-bar">
@@ -56,13 +56,13 @@ const NavBar = ({ loaded, showSignInModal, setShowSignInModal }) => {
                 <img src={logo} className="logo" alt="ReserveTable logo" />
               </NavLink>
             </div>
-            <div>
+            {/* <div>
               <img src={locationIcon} className="location-icon" alt="location" />
             </div>
-            <div className="nav-bar-location-city-text">Los Angeles</div>
+            <div className="nav-bar-location-city-text">Los Angeles1</div>
             <div>
               <img src={downCarrot} className="down-carrot-icon" alt="down-caret" />
-            </div>
+            </div> */}
           </div>
 
           {loaded && (

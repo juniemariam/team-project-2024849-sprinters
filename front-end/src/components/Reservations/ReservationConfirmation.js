@@ -127,8 +127,8 @@ function ReservationConfirmation() {
                                     <button onClick={routeToModifyPage} className="reservation-confirm-buttons">Modify</button>
                                     <img src={lineBreak} alt="" className="edit-reservation-line-break" />
                                     <button onClick={routeToCancelReservationModal} className="reservation-confirm-buttons">Cancel</button>
-                                    <img src={lineBreak} alt="" className="edit-reservation-line-break" />
-                                    <button className="reservation-confirm-buttons add-to-calendar">Add to calendar</button>
+                                    {/* <img src={lineBreak} alt="" className="edit-reservation-line-break" /> */}
+                                    {/* <button className="reservation-confirm-buttons add-to-calendar">Add to calendar</button> */}
                                 </span>
                             </div>
                         </div>
@@ -236,7 +236,7 @@ function ReservationConfirmation() {
                     <CancelReservation reservation={reservation} />
                 </Modal>
             }
-            <div className="reservation-confirmation-details-right">
+            {/* <div className="reservation-confirmation-details-right">
                 <div className="user-info-details-container">
                     <div className="reservation-confirmation-person-name">
                         <div>
@@ -265,7 +265,7 @@ function ReservationConfirmation() {
                         </div>
                     }
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }

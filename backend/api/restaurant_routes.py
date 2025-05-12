@@ -1,8 +1,10 @@
-from flask import Blueprint, render_template, url_for, redirect, request, jsonify
+from flask import Blueprint, render_template, url_for, redirect, request, jsonify, current_app
 from flask_login import current_user, login_user, logout_user, login_required
 from sqlalchemy.ext.declarative import declarative_base
 from ..models import Restaurant, Reservation, Review, SavedRestaurant, db
 from ..forms import ReservationForm, ReviewForm
+
+from flask_mail import Message
 
 
 Base=declarative_base()
@@ -42,6 +44,8 @@ def create_reservation(restaurant_id):
     reservation_form = ReservationForm()
     reservation_form['csrf_token'].data = request.cookies['csrf_token']
     
+    from .. import mail
+
     if reservation_form.validate_on_submit():
         reservation_data = reservation_form.data
 
@@ -61,6 +65,58 @@ def create_reservation(restaurant_id):
             db.session.add(new_reservation)
             db.session.commit()
             new_reservation_obj = new_reservation.to_dict()
+            print('------')
+            print(current_user)
+
+            try:
+                # Make sure current_user has an email attribute
+                # And that your User model has an email field.
+                # If User model doesn't have 'name' or 'username', adjust the greeting.
+                user_greeting_name = getattr(current_user, 'username', getattr(current_user, 'first_name', 'Valued Customer'))
+
+                subject = f"Your Reservation at {restaurant.name} is Confirmed!"
+                
+                # Format reservation_time for better readability
+                formatted_time = new_reservation.reservation_time.strftime("%A, %B %d, %Y at %I:%M %p")
+
+                # Create an HTML body for a nicer email (optional, can use msg.body for plain text)
+                html_body = render_template("email/reservation_confirmation.html",
+                                            user_name=user_greeting_name,
+                                            restaurant_name=restaurant.name,
+                                            reservation_time=formatted_time,
+                                            party_size=new_reservation.party_size)
+                
+                # Plain text body as a fallback
+                text_body = f"""
+Dear {user_greeting_name},
+
+Your reservation at {restaurant.name} has been confirmed.
+
+Details:
+Date and Time: {formatted_time}
+Table Size: {new_reservation.party_size}
+
+We look forward to seeing you!
+
+Sincerely,
+The {restaurant.name} Team (BookTable)
+"""
+
+                msg = Message(subject,
+                              recipients=[current_user.email],
+                              body=text_body, # Plain text version
+                              html=html_body) # HTML version
+                
+                mail.send(msg)
+                current_app.logger.info(f"Reservation confirmation email sent to {current_user.email}")
+
+            except Exception as e:
+                current_app.logger.error(f"Failed to send reservation email to {current_user.email}: {e}")
+                # Don't fail the entire request if email sending fails, the reservation is already made.
+                # You could add a message to the response if you want to inform the user.
+                # For example, by adding a key to new_reservation_obj:
+                # new_reservation_obj['email_status'] = 'Failed to send confirmation email.'
+            # --- End Email Sending ---
             
             return new_reservation_obj, 201
         return { "Error": "Restaurant not found" }, 404

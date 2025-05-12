@@ -98,8 +98,8 @@ function NavigationMenu({ showSignInModal, setShowSignInModal }) {
                             <UpcomingReservationsMenu />
                         )}
                         <img src={notifications} className="notifications-icon" alt="" />
-                        <img src={lineBreak} className="line-break" alt="" />
-                        <img src={magnifyingGlass} className="logged-in-search-button" alt="" />
+                        {/* <img src={lineBreak} className="line-break" alt="" /> */}
+                        {/* <img src={magnifyingGlass} className="logged-in-search-button" alt="" /> */}
                     </div>
                     :
                     <div className="sign-in-menu-items">

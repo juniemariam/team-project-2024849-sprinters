@@ -1,6 +1,8 @@
 .search-bar-container {
     height: 250px;
-    background: linear-gradient(.25turn, rgb(20, 33, 75), 50%, rgb(100, 109, 136));
+    background: linear-gradient(0.25turn, #0f2027, 50%, #2f9775);
+
+
     /* background: linear-gradient(.647turn,#1a0a47cc,#0d1b4599 .01%,#0d1b45cc 51.04%,#0d1b45 99.1%); */
     display: flex;
     flex-direction: column;

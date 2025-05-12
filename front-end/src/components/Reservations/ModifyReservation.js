@@ -41,7 +41,7 @@ function ModifyReservation() {
         if (!date) errors.push("Please select a new date");
         if (!time) errors.push("Please select a new time");
         if (dayjs(`${date} ${time}`).isBefore(dayjs())) errors.push("Please select a future time");
-        if (!partySize) errors.push("Please select your party size");
+        if (!partySize) errors.push("Please select your table size");
 
         setValidationErrors(errors);
 
