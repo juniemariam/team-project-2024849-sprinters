@@ -73,8 +73,10 @@ front-end/ # React app
 ## 📐 Diagrams
 
 ### 🧱 Deployment Diagram
+- **Deployment Diagram**: [View Here](./architecture/deployment diagram.png)
 
 ### 🧩 Component Diagram
+- **Component Diagram**: [View Here](./architecture/ComponentDiagram.png)  
 
 ### 🔧 Backend
 ```bash
