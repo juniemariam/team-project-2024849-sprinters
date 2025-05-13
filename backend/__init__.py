@@ -17,6 +17,8 @@ from .api.review_routes import review_routes
 from .api.restaurant_manager_routes import restaurant_manager_routes
 from  .api.admin_routes import admin_routes
 
+from flask_mail import Mail
+
 
 
 from .seeds import seed_commands
@@ -28,6 +30,7 @@ app = Flask(__name__, static_folder='../front-end/build', static_url_path='/')
 login = LoginManager(app)
 login.login_view = 'auth.unauthorized'
 
+mail = Mail()
 
 @login.user_loader
 def load_user(id):
@@ -42,6 +45,7 @@ app.config.from_object(Config)
 # Initialize extensions
 db.init_app(app)
 Migrate(app, db)
+mail.init_app(app)
 CORS(app)
 jwt = JWTManager(app)
 

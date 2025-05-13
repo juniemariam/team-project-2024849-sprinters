@@ -102,7 +102,7 @@ function DiningDashboardSavedRestaurants() {
                                         }
                                     </div>
                                     <div className="saved-restaurants-restaurant-cuisine">
-                                        {restaurantCuisine(restaurant)} | Los Angeles / {restaurant.neighborhood}
+                                        {restaurantCuisine(restaurant)}  / {restaurant.neighborhood}
                                     </div>
                                 </div>
                             </div>

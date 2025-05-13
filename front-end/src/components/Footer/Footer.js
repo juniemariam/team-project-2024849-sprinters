@@ -84,7 +84,7 @@ function Footer() {
                         </div>
                         <div>
                             <div className="footer-other-sites">
-                               
+{/*                                
                                 <div className="footer-below-other-sites">
                                     <div className="footer-other-site">
                                         <a id="ayrbnb" className="ayrbnb-link" href="https://ayrbnb.herokuapp.com" target="_blank" rel="noreferrer">
@@ -98,7 +98,7 @@ function Footer() {
                                             <img src={rightArrow} className="footer-right-arrow codebunny-arrow" />
                                         </a>
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>

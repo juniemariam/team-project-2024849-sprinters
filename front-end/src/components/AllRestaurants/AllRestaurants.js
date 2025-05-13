@@ -19,11 +19,11 @@ function DisplayAllRestaurants({ setUserReservationTime }) {
         <>
             <div className="all-restaurants-outer-container">
                 <div className="all-restaurants-container">
-                    <div className="above-restaurant-cards">
+                    {/* <div className="above-restaurant-cards">
                         <div className="verify-city"><p>It looks like you're in West Hollywood. Not correct?</p></div>
                         <div><img src={getCurrentLocation} className="current-location-arrow" alt="" /></div>
                         <div className="get-current-location">Get current location</div>
-                    </div>
+                    </div> */}
                     <div className="card-wrapper">
                         <div className="restaurant-cards">
                             {allRestaurants.map(restaurant => (

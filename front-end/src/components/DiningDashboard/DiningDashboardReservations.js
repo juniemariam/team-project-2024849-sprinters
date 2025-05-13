@@ -48,7 +48,7 @@ function DiningDashboardReservations() {
 
     return (
         <div className="dining-dashboard-right">
-            <div className="dining-dashboard-points-container">
+            {/* <div className="dining-dashboard-points-container">
                 <div className="dining-dashboard-points-text-container">
                     <div className="dining-dashboard-points-text2">
                         Points
@@ -87,7 +87,7 @@ function DiningDashboardReservations() {
                         Learn more about ReserveTable Rewards
                     </div>
                 </div>
-            </div>
+            </div> */}
             <div className="dining-dashboard-upcoming-reservations-container">
                 <div className="dining-dashboard-future-header">
                     <h1>Upcoming reservations</h1>

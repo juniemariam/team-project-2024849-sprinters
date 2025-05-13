@@ -372,7 +372,7 @@ function SearchResults() {
                         ?
                         <div className="search-results-upper-heading">
                             <div className="search-results-upper-search-text">
-                                You searched for "{search}" in Los Angeles
+                                You searched for "{search}" 
                             </div>
                             <div className="search-results-upper-number-results-text">
                                 {filteredRestaurants.length} restaurants match "{search}"
@@ -383,11 +383,11 @@ function SearchResults() {
                             {filteredRestaurants.length === 1
                                 ?
                                 <div>
-                                    {filteredRestaurants.length} restaurant available in Los Angeles
+                                    {filteredRestaurants.length} restaurant available 
                                 </div>
                                 :
                                 <div>
-                                    {filteredRestaurants.length} restaurants available in Los Angeles
+                                    {filteredRestaurants.length} restaurants available 
                                 </div>
                             }
                         </div>

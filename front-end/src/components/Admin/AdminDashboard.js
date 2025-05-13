@@ -27,7 +27,7 @@ function AdminDashboard() {
       <div className="dashboard-card">
         <div className="summary-metrics">
           <p><strong>Total Reservations:</strong> {stats.total}</p>
-          <p><strong>Average Party Size:</strong> {stats.average_party_size}</p>
+          <p><strong>Average Table Size:</strong> {stats.average_party_size}</p>
           <p><strong>Top Restaurant:</strong> {stats.top_restaurant || "—"}</p>
         </div>
 

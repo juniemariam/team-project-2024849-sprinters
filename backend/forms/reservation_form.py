@@ -5,5 +5,5 @@ from wtforms.validators import DataRequired, ValidationError
 
 class ReservationForm(FlaskForm):
     reservation_time = DateTimeField("Reservation Time", validators=[DataRequired()])
-    party_size = IntegerField("Party Size", validators=[DataRequired()])
+    party_size = IntegerField("Table Size", validators=[DataRequired()])
     submit = SubmitField("Submit")

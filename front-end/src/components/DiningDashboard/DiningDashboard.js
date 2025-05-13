@@ -23,9 +23,9 @@ function DiningDashboard() {
                 <div className="dining-dashboard-name-text">
                     {sessionUser.first_name} {sessionUser.last_name}
                 </div>
-                <div className="dining-dashboard-points-text">
+                {/* <div className="dining-dashboard-points-text">
                     0 points
-                </div>
+                </div> */}
             </div>
             <div className="dining-dashboard-container">
                 <div className="dining-dashboard-left">
@@ -52,9 +52,12 @@ function DiningDashboard() {
                                 <div className="dining-dashboard-saved-restaurants-text-false">Saved Restaurants</div>
                             }
                         </div>
-                        <div className="dining-dashboard-space-to-top not-first-item">Account Details <img src={newIcon} alt="" className="dining-history-new-icon" /></div>
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                        {/* <div className="dining-dashboard-space-to-top not-first-item">Account Details <img src={newIcon} alt="" className="dining-history-new-icon" /></div>
                         <div className="dining-dashboard-space-to-top not-first-item">Preferences</div>
-                        <div className="dining-dashboard-space-to-top not-first-item">Payment Methods</div>
+                        <div className="dining-dashboard-space-to-top not-first-item">Payment Methods</div> */}
                     </div>
                 </div>
                 {!params.has('view') &&

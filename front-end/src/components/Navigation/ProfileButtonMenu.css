@@ -3,11 +3,13 @@
     flex-direction: column;
     align-items: flex-start;
     background-color: white;
-    height: 300px;
-    width: 320px;
+    /* height: 200px; */
+    min-height: fit-content;
+    min-width: fit-content;
+    /* width: 220px; */
     position: absolute;
     background-color: white;
-    margin-top: 351px;
+    margin-top: 251px;
     margin-left: -280px;
     border: 1px solid;
     border-color: rgb(235, 235, 235);
@@ -27,7 +29,7 @@
 }
 
 .profile-drop-down-bottom {
-    height: 50%;
+   
     width: 100%;
     display: flex;
     flex-direction: column;

@@ -1,5 +1,8 @@
-from backend.models import db, User, Restaurant, Reservation, Review, environment, SCHEMA
+from backend.models import db, User, Restaurant, Reservation, Review, environment, SCHEMA, MenuItem
 import datetime
+from sqlalchemy import text
+
+# ... other imports
 
 
 # *********************************** Users **************************************** #
@@ -26,7 +29,7 @@ def undo_users():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.users RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM users")
+        db.session.execute(text("DELETE FROM users"))
     db.session.commit()
 
 
@@ -40,11 +43,17 @@ def seed_restaurants():
 
     for name in names:
         rest = Restaurant(
-            name=name.capitalize(), neighborhood="Testhood", cuisines="Fusion", cost=3,
-            operation_hours="Mon-Fri 10:00-22:00", dining_style="Casual", dress_code="Smart Casual",
-            parking_details="Street parking", payment_options="AMEX, Visa", cross_street="Test Street",
-            phone="(123) 456-7890", executive_chef="Chef Test", description="Test description...",
-            website=f"http://{name}.com", preview_img=f"https://example.com/{name}.jpg"
+            name=name.capitalize(),
+            neighborhood="Testhood",
+            address="123 Main Street",
+            cuisines="Fusion",
+            cost="$$",  # Your model expects a string, not an integer
+            operation_hours="Mon-Fri 10:00-22:00",
+            phone="(123) 456-7890",
+            description="Test description...",
+            website=f"http://{name}.com",
+            preview_img=f"https://example.com/{name}.jpg",
+            is_approved=True
         )
         objects.append(rest)
 
@@ -57,7 +66,7 @@ def undo_restaurants():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.restaurants RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM restaurants")
+        db.session.execute(text("DELETE FROM restaurants"))
     db.session.commit()
 
 
@@ -81,7 +90,7 @@ def undo_reservations():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.reservations RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM reservations")
+        db.session.execute(text("DELETE FROM reservations"))
     db.session.commit()
 
 
@@ -106,5 +115,12 @@ def undo_reviews():
     if environment == "production":
         db.session.execute(f"TRUNCATE table {SCHEMA}.reviews RESTART IDENTITY CASCADE;")
     else:
-        db.session.execute("DELETE FROM reviews")
+        db.session.execute(text("DELETE FROM reviews"))
+    db.session.commit()
+
+def undo_menu_items():
+    if environment == "production":
+        db.session.execute(f"TRUNCATE table {SCHEMA}.menu_items RESTART IDENTITY CASCADE;")
+    else:
+        db.session.execute(text("DELETE FROM menu_items"))
     db.session.commit()

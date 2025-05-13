@@ -51,7 +51,7 @@ function Reservations({ userReservationTime, showSignInModal, setShowSignInModal
         setValidationErrors([]);
         const errors = [];
 
-        if (!partySize) errors.push("Please select party size");
+        if (!partySize) errors.push("Please select Table size");
         if (!date) errors.push("Please select a date");
         if (dayjs(`${date} ${time}`).isBefore(dayjs())) errors.push("Please select a future time");
         if (!time) errors.push("Please select a time");
@@ -85,7 +85,7 @@ function Reservations({ userReservationTime, showSignInModal, setShowSignInModal
                             )}
                     </div>
                     <div className="reservation-party-size-label">
-                        <div className="reservation-party-size-text">Party Size</div>
+                        <div className="reservation-party-size-text">Table Size</div>
                         <div className="reservation-party-size-border-bottom">
                             <div className="reservation-party-size-select">
                                 <img src={downCaret} className="reservation-down-caret" />

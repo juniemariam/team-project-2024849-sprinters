@@ -200,7 +200,7 @@ function RestaurantProfile({ userReservationTime, showSignInModal, setShowSignIn
                                     </div>
                                 </div>
                             </div>
-                            <div className="restaurant-profile-general-info-bottom">
+                            {/* <div className="restaurant-profile-general-info-bottom">
                                 <div className="space-to-left-23 top-tags1">
                                     Top Tags:
                                 </div>
@@ -213,7 +213,7 @@ function RestaurantProfile({ userReservationTime, showSignInModal, setShowSignIn
                                 <div className="space-to-left-24 top-tags4">
                                     Fit For Foodies
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className="restaurant-profile-description-container">
                             <p className="restaurant-profile-description">{restaurant.description}</p>
