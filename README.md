@@ -116,3 +116,5 @@ cd front-end
 npm install
 npm start
 ```
+### Cloud Deployment -GCP
+[View Here](output/Outputs.pdf)
